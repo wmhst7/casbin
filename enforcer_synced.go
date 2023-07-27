@@ -15,6 +15,7 @@
 package casbin
 
 import (
+	"log"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -36,6 +37,7 @@ type SyncedEnforcer struct {
 
 // NewSyncedEnforcer creates a synchronized enforcer via file or DB.
 func NewSyncedEnforcer(params ...interface{}) (*SyncedEnforcer, error) {
+	log.Println("SyncedEnforcer is deprecated, use SyncedEnforcerWithWatcher instead")
 	e := &SyncedEnforcer{}
 	var err error
 	e.Enforcer, err = NewEnforcer(params...)
