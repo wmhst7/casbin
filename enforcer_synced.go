@@ -37,7 +37,7 @@ type SyncedEnforcer struct {
 
 // NewSyncedEnforcer creates a synchronized enforcer via file or DB.
 func NewSyncedEnforcer(params ...interface{}) (*SyncedEnforcer, error) {
-	log.Println("SyncedEnforcer is deprecated, use SyncedEnforcerWithWatcher instead")
+	log.Println("Using wmhst7 fork of casbin")
 	e := &SyncedEnforcer{}
 	var err error
 	e.Enforcer, err = NewEnforcer(params...)
@@ -80,7 +80,7 @@ func (e *SyncedEnforcer) StartAutoLoadPolicy(d time.Duration) {
 				// error intentionally ignored
 				_ = e.LoadPolicy()
 				// Uncomment this line to see when the policy is loaded.
-				// log.Print("Load policy for time: ", n)
+				log.Print("Load policy for time: ", n)
 				n++
 			case <-e.stopAutoLoad:
 				return
