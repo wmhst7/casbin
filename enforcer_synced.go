@@ -77,10 +77,11 @@ func (e *SyncedEnforcer) StartAutoLoadPolicy(d time.Duration) {
 		for {
 			select {
 			case <-ticker.C:
+				start := time.Now()
 				// error intentionally ignored
 				_ = e.LoadPolicy()
 				// Uncomment this line to see when the policy is loaded.
-				log.Print("Load policy for time: ", n)
+				log.Printf("Load policy in %s, %d times", time.Since(start), n)
 				n++
 			case <-e.stopAutoLoad:
 				return
